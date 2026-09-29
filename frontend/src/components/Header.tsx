@@ -4,8 +4,9 @@ import { useSession, signOut } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Mail, LogOut, Slack, ExternalLink, Activity } from 'lucide-react';
+import { getBackendUrl } from '@/lib/config';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
+const BACKEND_URL = getBackendUrl();
 
 export default function Header({ activeTab, setActiveTab }: { activeTab: string; setActiveTab: (tab: string) => void }) {
   const { data: session } = useSession();

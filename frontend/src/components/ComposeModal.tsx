@@ -4,8 +4,9 @@ import { useState } from 'react';
 import Papa from 'papaparse';
 import axios from 'axios';
 import { X, Upload, Send, FileText, CheckCircle, AlertCircle, Clock, ShieldAlert } from 'lucide-react';
+import { getBackendUrl } from '@/lib/config';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
+const BACKEND_URL = getBackendUrl();
 
 interface ComposeModalProps {
   isOpen: boolean;

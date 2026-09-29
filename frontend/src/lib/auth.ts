@@ -31,6 +31,15 @@ export const authOptions: NextAuthOptions = {
     signIn: '/login',
   },
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith('/')) return `${baseUrl}${url}`;
+      try {
+        if (new URL(url).origin === baseUrl) return url;
+      } catch (e) {
+        // ignore invalid URL format
+      }
+      return baseUrl;
+    },
     async session({ session, token }) {
       if (session.user) {
         (session.user as any).id = token.sub;

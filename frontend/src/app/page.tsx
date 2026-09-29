@@ -9,8 +9,9 @@ import Header from '@/components/Header';
 import EmailTable, { EmailJob } from '@/components/EmailTable';
 import ComposeModal from '@/components/ComposeModal';
 import { Plus, Search, Mail, CheckCircle2, Clock, Activity, AlertTriangle } from 'lucide-react';
+import { getBackendUrl } from '@/lib/config';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
+const BACKEND_URL = getBackendUrl();
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
